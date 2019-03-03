@@ -50,7 +50,11 @@ var animal = new Animal();
 var barsik = new Cat('Барсик');
 
 console.log(barsik.name);
+
 console.log(barsik.dailyNorm(150));
+
 console.log(barsik.stroke().feed().stroke().feed().feed().stroke());
+
+barsik = null;
 
 
