@@ -30,20 +30,19 @@ function Animal(name) {
     this.animalFeed = function () {
         alert('Кот доволен ^_^');
         return this;
-    }
+    };
 
     this.stroke = function () {
         alert('Гладим кота.');
         return this;
-    }
-
+    };
 
 }
 
 
 function Cat(name) {
     Animal.apply(this, arguments);
-};
+}
 
 
 var animal = new Animal();
