@@ -5,9 +5,10 @@ function Animal(name) {
     var self = this;
 
 
-    function _getFormattedFoodAmount() {
+    this._getFormattedFoodAmount = function() {
         return foodAmount + 'гр.';
-    }
+    };
+
 
     this.dailyNorm = function (amount) {
         if (!arguments.length) return foodAmount;
@@ -22,19 +23,7 @@ function Animal(name) {
     this.name = name;
 
     this.feed = function () {
-        console.log('Насыпаем в миску ' + _getFormattedFoodAmount() + ' грамм корма.');
-        self.animalFeed();
-        return this;
-    };
-
-    this.animalFeed = function () {
-        alert('Кот доволен ^_^');
-        return this;
-    };
-
-    this.stroke = function () {
-        alert('Гладим кота.');
-        return this;
+        return 'Насыпаем в миску ' + self._getFormattedFoodAmount() + ' грамм корма.';
     };
 
 }
@@ -42,6 +31,17 @@ function Animal(name) {
 
 function Cat(name) {
     Animal.apply(this, arguments);
+
+    var animalFeed = this.feed;
+    this.feed = function() {
+        console.log(animalFeed() + '\n' + 'Кот доволен ^_^');
+        return this;
+    };
+
+    this.stroke = function() {
+        console.log('Гладим кота.');
+        return this;
+    };
 }
 
 
